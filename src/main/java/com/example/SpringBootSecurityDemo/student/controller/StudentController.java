@@ -13,6 +13,9 @@ import java.util.List;
 @RequestMapping("api/v1/students")
 public class StudentController {
 
+    /**
+     * list of student
+     */
     private static final List<Student> STUDENTS = Arrays.asList(
             new Student(1, "James Clark"),
             new Student(2, "Ana Wood"),
