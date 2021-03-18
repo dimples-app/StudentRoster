@@ -26,6 +26,7 @@ public class StudentManagementController {
      * @return
      */
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_ADMINTRAINEE')")
     public static List<Student> getSTUDENTS() {
         return STUDENTS;
     }
@@ -35,6 +36,7 @@ public class StudentManagementController {
      * @param student
      */
     @PostMapping
+    @PreAuthorize("hasAuthority('student:write')")
     public void registeredNewStudent( @RequestBody Student student) {
         System.out.println(student);
     }
@@ -44,6 +46,7 @@ public class StudentManagementController {
      * @param studentId
      */
     @DeleteMapping(path = "{studentId}")
+    @PreAuthorize("hasAuthority('student:write')")
     public void deleteStudent(@PathVariable Integer studentId) {
         System.out.println(studentId);
     }
@@ -54,6 +57,7 @@ public class StudentManagementController {
      * @param student
      */
     @PutMapping(path = "{studentId}")
+    @PreAuthorize("hasAuthority('student:write')")
     public void updateStudent(@PathVariable Integer studentId, @RequestBody Student student) {
         System.out.println(String.format("%s %s", studentId, student));
     }
