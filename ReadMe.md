@@ -12,3 +12,5 @@
 ## Tech Stack: 
 Java, Springboot, Postgre
 
+## Kanban Borad
+[Student Roster][https://github.com/dimples-app/StudentRosterWithSpringBootSecurity/projects/1]
