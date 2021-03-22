@@ -1,6 +1,7 @@
 package com.example.SpringBootSecurityDemo.security;
 
 import com.example.SpringBootSecurityDemo.auth.ApplicationUserService;
+import com.example.SpringBootSecurityDemo.jwt.JwtUsernameAndPasswordAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsPasswordService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -45,35 +47,49 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager()))
                 .authorizeRequests()
                 .antMatchers("/", "index", "/csss/*", "/js/*").permitAll()
                 .antMatchers( "/api/**").hasRole(STUDENT.name())
+
+                /**
+                 * Comment out antmatchers as no longer using
+                 */
                 //.antMatchers(HttpMethod.DELETE, "/management/api/**").hasAuthority(ApplicationUserPermission.COURSE_WRITE.name())
                 //.antMatchers(HttpMethod.POST, "/management/api/**").hasAuthority(ApplicationUserPermission.COURSE_WRITE.name())
                 //.antMatchers(HttpMethod.PUT, "/management/api/**").hasAuthority(ApplicationUserPermission.COURSE_WRITE.name())
                 // .antMatchers(HttpMethod.DELETE, "/management/api/**").hasAnyRole(ADMIN.name(), ADMINTRAINEE.name())
+
                  .anyRequest()
-                .authenticated()
-                .and()
-                //.httpBasic();
-                .formLogin()
-                    .loginPage("/login").permitAll()
-                    .defaultSuccessUrl("/courses", true)
-                    .passwordParameter("password")
-                    .usernameParameter("username")
-                .and()
-                .rememberMe()
-                    .tokenValiditySeconds((int)TimeUnit.DAYS.toSeconds(21))
-                    .key("somethingthatsecure")
-                    .rememberMeParameter("remember-me")
-                .and()
-                .logout()
-                    .logoutUrl("/logout")
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
-                    .clearAuthentication(true)
-                    .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID", "remember-me")
-                 .logoutSuccessUrl("/login");
+                .authenticated();
+
+
+        /**
+         * Commenting out form based authentication
+         * due to implementation of jwt
+         */
+//                    .and()
+//                    //.httpBasic();
+//                .formLogin()
+//                    .loginPage("/login").permitAll()
+//                    .defaultSuccessUrl("/courses", true)
+//                    .passwordParameter("password")
+//                    .usernameParameter("username")
+//                .and()
+//                .rememberMe()
+//                    .tokenValiditySeconds((int)TimeUnit.DAYS.toSeconds(21))
+//                    .key("somethingthatsecure")
+//                    .rememberMeParameter("remember-me")
+//                .and()
+//                .logout()
+//                    .logoutUrl("/logout")
+//                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
+//                    .clearAuthentication(true)
+//                    .invalidateHttpSession(true)
+//                    .deleteCookies("JSESSIONID", "remember-me")
+//                 .logoutSuccessUrl("/login");
     }
 
     /**
