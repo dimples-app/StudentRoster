@@ -12,5 +12,11 @@
 ## Tech Stack: 
 Java, Springboot, Postgre
 
+## MVC
+- Config Classes
+- Security Classes
+- Controllers
+- Client
+
 ## Kanban Borad
 [Student Roster][https://github.com/dimples-app/StudentRosterWithSpringBootSecurity/projects/1]
