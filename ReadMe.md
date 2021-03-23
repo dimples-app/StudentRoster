@@ -13,10 +13,10 @@
 Java, Springboot, Postgre
 
 ## MVC
-- Config Classes
-- Security Classes
-- Controllers
-- Client
+- Config Classes ( ApplicationConfig, JwtConfig )
+- Security Classes ( ApplicationUserRole, ApplicationUserPermission)
+- Controllers ( StudentController, StudentManagementController, TemplateController)
+- Client (Student) 
 
 ## Kanban Borad
 [Student Roster][https://github.com/dimples-app/StudentRosterWithSpringBootSecurity/projects/1]
