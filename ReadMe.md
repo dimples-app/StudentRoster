@@ -6,7 +6,8 @@
 - Application to implement below features
   - Install spring security
   - Implement basic authentication
-  - Add Ant Matcher
+  - Implementation of Role Based Auth
+  - Implementation of JWT
 
 
 ## Tech Stack: 
