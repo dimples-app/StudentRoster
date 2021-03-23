@@ -2,7 +2,8 @@
 
 ---
 
-## Description: 
+## Description: Student Roster Application to retrieve, create, update and delete student/courses from Student Roster
+
 - Application to implement below features
   - Install spring security
   - Implement basic authentication
@@ -11,7 +12,11 @@
 
 
 ## Tech Stack: 
-Java, Springboot, Postgre
+Java, Springboot
+
+## Dependency 
+-Gauva
+-JWT
 
 ## MVC
 - Config Classes ( ApplicationConfig, JwtConfig )
