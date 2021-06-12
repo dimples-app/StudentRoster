@@ -2,7 +2,7 @@
 
 ---
 
-### Description: Student Roster Application to retrieve, create, update and delete student/courses from Student Roster
+### Description: Student Roster Application to retrieve, create, update and delete student/courses from roster
 
 - Application to implement below features
   - Install spring security
