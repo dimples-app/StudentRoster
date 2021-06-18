@@ -4,7 +4,7 @@
 
 ### Description: Student Roster Application to retrieve, create, update and delete student/courses from roster
 
-- Application to implement below features
+- Application implements below features
   - Install spring security
   - Implement basic authentication
   - Implementation of Role Based Auth
