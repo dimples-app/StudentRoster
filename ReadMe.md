@@ -1,4 +1,4 @@
-# Spring Boot Security App
+# Student Roster: Spring Boot Security App
 
 ---
 
