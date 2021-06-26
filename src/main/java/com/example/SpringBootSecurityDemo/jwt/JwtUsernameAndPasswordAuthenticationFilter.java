@@ -65,8 +65,6 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
 
-        //String securekey = "abcdefabcdefabcdef123098123098123098abcdefabcdefabcdef123098123098123098";
-
         String token = Jwts.builder()
                 .setSubject(authResult.getName())
                 .claim("authorities", authResult.getAuthorities())
@@ -78,6 +76,6 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
         response.addHeader(jwtConfig.getAuthorizationHeader(),
                 jwtConfig.getTokenPrefix() + token);
 
-        //super.successfulAuthentication(request, response, chain, authResult);
+     
     }
 }
