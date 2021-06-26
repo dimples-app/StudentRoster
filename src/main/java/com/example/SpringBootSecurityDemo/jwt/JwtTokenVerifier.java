@@ -51,8 +51,6 @@ public class JwtTokenVerifier extends OncePerRequestFilter {
         try {
 
 
-            //String securekey = "abcdefabcdefabcdef123098123098123098abcdefabcdefabcdef123098123098123098";
-
             Jws<Claims> claimsJws = Jwts.parser()
                     .setSigningKey(secretKey)
                     .parseClaimsJws(token);
