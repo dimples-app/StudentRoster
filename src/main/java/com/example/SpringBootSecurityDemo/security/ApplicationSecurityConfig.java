@@ -120,14 +120,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        UserDetails adminUser = User.builder()
 //                .username("adminuser")
-//                .password(passwordEncoder.encode("password000"))
+//                .password(passwordEncoder.encode("password"))
 //                //.roles(ADMIN.name())
 //                .authorities(ADMIN.getGrantedAuthorities())
 //                .build();
 //
 //        UserDetails adminTrainee = User.builder()
 //                .username("adminTrainee")
-//                .password(passwordEncoder.encode("password000"))
+//                .password(passwordEncoder.encode("password"))
 //                //.roles(ADMINTRAINEE.name())
 //                .authorities(ADMINTRAINEE.getGrantedAuthorities())
 //                .build();
